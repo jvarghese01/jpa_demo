@@ -3,9 +3,14 @@ package org.jsonlibrary.jpademo.entities;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
+
 
 @Entity
 public class Item {
@@ -19,6 +24,10 @@ public class Item {
 	public String description;
 	public String itemCode;
 	
+	public enum Category {Produce, Meat, Frozen, Packaged};
+
+	@Enumerated(EnumType.STRING)
+	public Category category;
 	
 	public int getId() {
 		return id;
@@ -49,6 +58,12 @@ public class Item {
 	}
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 }
